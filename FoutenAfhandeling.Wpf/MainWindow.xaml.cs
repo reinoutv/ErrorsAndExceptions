@@ -34,7 +34,8 @@ namespace FoutenAfhandeling.Wpf
             string errorMessage = "";
             errorTextBlock.Text = errorMessage;
 
-            try { 
+            try
+            {
                 int getal1 = int.Parse(input1);
                 int getal2 = int.Parse(input2);
 
@@ -54,7 +55,13 @@ namespace FoutenAfhandeling.Wpf
                     resultaat = som.ToString();
                 }
             }
-            catch( Exception gEx)
+            catch (FormatException fEx)
+            {
+                errorMessage = "Error: Twee gehele getallen gevraagd\nDetails: ";
+                errorMessage += fEx.Message + "\n";
+                errorTextBlock.Text = errorMessage;
+            }
+            catch (Exception gEx)
             {
                 errorMessage = "Error: ";
                 errorMessage += gEx.Message + "\n";
